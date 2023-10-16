@@ -1,0 +1,107 @@
+---
+openapi: 3.0.0
+info:
+  title: Pbiometria-Sprint0
+  description: Este es el diseño de la API presentado para el proyecto de Biometria en el Sprint0
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/PAULARAMIRO11_1/Api_Pbiometria/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: http://localhost/Sprint_0Web/src/api/
+  description: Servidor
+paths:
+  /mediciones:
+    get:
+      tags:
+      - público
+      summary: Devuelve todas las mediciones
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Mediciones'
+        "401":
+          description: No autorizado
+        "5XX":
+          description: Error del servidor.
+    post:
+      tags:
+      - público
+      summary: Crea una medicion
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/mediciones_body'
+        required: true
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: No autorizado
+        "5XX":
+          description: Error del servidor.
+  /mediciones/{id}:
+    get:
+      tags:
+      - público
+      summary: "Obtiene las mediciones del sensor {id}"
+      parameters:
+      - name: id
+        in: path
+        description: Id del sensor
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          example: 1
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mediciones'
+        "401":
+          description: No autorizado
+        "404":
+          description: No se encontró el usuario.
+        "5XX":
+          description: Error del servidor.
+components:
+  schemas:
+    Mediciones:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id de la medicion
+        temperatura:
+          type: string
+          description: temperatura del sensor
+        ppm:
+          type: string
+          description: ppm del sensor
+        bateria:
+          type: string
+          description: bateria del sensor
+    mediciones_body:
+      required:
+      - bateria
+      - ppm
+      - temperatura
+      type: object
+      properties:
+        temperatura:
+          type: string
+          example: 10ºC
+        ppm:
+          type: string
+          example: 50ppm
+        bateria:
+          type: integer

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos sensores</title>
+    <link rel="stylesheet" href="../../css/sensores3.css">
+</head>
+<body>
+    <img src="../../images/icono_flecha.svg" id="flecha-atras">
+    <div id="segundo-fondo">
+
+        <!-- PROGRESS BAR CIRCULAR -->
+
+        <div id="contenedor-progress-bar">
+            <h1>Aquí tienes los datos de tu sensor</h1>
+            <div class="progress-circular">
+                <img src="../../images/icono_ozono.svg" id="foto-cambiar">
+            </div>
+            <h3 class="texto-datos" id="texto-informativo">200 ppm</h3>
+        </div>
+
+        <!-- CONTENEDORES CON LOS DATOS -->
+
+        <div id="contenedor-cuadrados">
+
+            <div class="contenedor-datos" onclick="pulsadoOzono()" id="contenedor-ozono">
+                <img src="../../images/icono_ozono.svg">
+                <p>Ozono</p>
+                <h3 id="ppm-sensor" class="texto-datos">200pm</h3>
+            </div>
+            
+            <div class="contenedor-datos" onclick="pulsadoTemperatura()" id="contenedor-temp">
+                <img src="../../images/icono_temp.svg">
+                <p>Temperatura</p>
+                <h3 id="temperatura-sensor" class="texto-datos">25ºC</h3>
+            </div>
+
+            <div class="contenedor-datos">
+                <img src="../../images/icono_ubi.svg">
+                <p>Ubicación</p>
+            </div>
+
+            <div class="contenedor-datos" onclick="pulsadoBateria()" id="contenedor-bateria">
+                <img src="../../images/icono_bateria.svg">
+                <p>Bateria</p>
+                <h3 id="bateria-sensor" class="texto-datos">70%</h3>
+            </div>
+
+        </div>
+
+<script src="../medicionesMetodos.js"></script>
+<script src="sensores4.js"></script>
+</body>
+</html>
